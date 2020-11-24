@@ -60,11 +60,11 @@
 }
 
 #am-pm {
-  font-size: 40;
+  font-size: 25;
   font-family: System-Bold;
   text-length: 55;
   text-anchor: end;
-  x: 100%-5%;
+  x: 100%-12%;
   y: -40;
   fill: white;
   display: none;

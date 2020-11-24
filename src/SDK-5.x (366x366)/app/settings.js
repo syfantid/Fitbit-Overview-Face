@@ -520,7 +520,7 @@ export function onsettingschange(data) {
   settings = data;
   applySettings();
   saveSettings();
-  time.drawTime(new Date());  
+  time.drawTime(new Date());
 }
 
 messaging.peerSocket.addEventListener("message", function(evt) {

@@ -2,3 +2,4 @@
 /*.fba
 /.download-from-studio/
 node_modules\
+.idea\
