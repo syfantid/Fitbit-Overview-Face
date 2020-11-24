@@ -11,8 +11,8 @@ export let batteryPercent = document.getElementById("battery-percent");
 export let batteryPercentBlock = document.getElementById("battery");
 
 export let colour0 = '#FF0000';
-export let colour25 = 'darkorange';
-export let colour50 = 'gold';
+export let colour25 = 'lightseagreen';
+export let colour50 = 'steelblue';
 export let colour75 = '#00FF00';
 //Battery - END
 
@@ -21,6 +21,7 @@ export function setShowBatteryPercent(visibility) {
 }
 
 export function setShowBatteryBar(visibility) {
+  console.log("Battery bar: " + visibility)
   batteryLine.style.display = (!visibility ? "none" : "inline");
 }
 

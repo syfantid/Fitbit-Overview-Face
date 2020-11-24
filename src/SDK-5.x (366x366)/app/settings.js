@@ -18,6 +18,9 @@ import * as activity from "./activity.js"
 import * as state from "./state.js"
 import * as torch from "./torch.js"
 
+// Messaging
+import asap from "fitbit-asap/app"
+
 // SETTINGS
 export const SETTINGS_TYPE = "cbor";
 export const SETTINGS_FILE = "settingsV1.cbor";
@@ -28,13 +31,22 @@ export let noSettingsTextEl = document.getElementById('noSettingsText');
 export let settings = loadSettings();
 
 export function applySettings() {
+  const noSettingsData = {
+    dataType: "error",
+    key: "settings",
+    value: "No settings loaded",
+    timestamp: new Date().getTime()
+  };
+
   if (!loadSettings) {
     console.log("No settings loaded");
+    asap.send(noSettingsData);
     return;
   }
   
   if(!settings) {
     console.log("No settings loaded");
+    asap.send(noSettingsData);
     return;
   }
   
@@ -104,7 +116,7 @@ export function applySettings() {
       if (settings.hasOwnProperty("flashDots")) {
         time.setFlashDots(!!settings["flashDots"]); 
       } else {
-        time.setFlashDots(true);
+        time.setFlashDots(false);
       } 
     }
     
@@ -211,8 +223,8 @@ export function applySettings() {
       hr.hrIconDiastoleEl.style.fill = settings["heartColour"];
       hr.hrIconSystoleEl.style.fill = settings["heartColour"];         
     } else {
-      hr.hrIconDiastoleEl.style.fill = "crimson";
-      hr.hrIconSystoleEl.style.fill = "crimson"; 
+      hr.hrIconDiastoleEl.style.fill = "#FA4D61";
+      hr.hrIconSystoleEl.style.fill = "#FA4D61";
     }
     
     if (settings.hasOwnProperty("heartRateColour") && settings["heartRateColour"]) {
@@ -259,7 +271,7 @@ export function applySettings() {
     if (settings.hasOwnProperty("showBatteryBar")) {
       battery.setShowBatteryBar(!!settings["showBatteryBar"]); 
     } else {
-      battery.setShowBatteryBar(true);
+      battery.setShowBatteryBar(false);
     } 
         
     if (settings.hasOwnProperty("battery0Colour") && settings["battery0Colour"]) {
@@ -271,13 +283,13 @@ export function applySettings() {
     if (settings.hasOwnProperty("battery25Colour") && settings["battery25Colour"]) {
       battery.setColour25(settings["battery25Colour"]);
     } else {
-      battery.setColour25("darkorange");
+      battery.setColour25("lightseagreen");
     }
         
     if (settings.hasOwnProperty("battery50Colour") && settings["battery50Colour"]) {
       battery.setColour50(settings["battery50Colour"]);
     } else {
-      battery.setColour50("gold");
+      battery.setColour50("steelblue");
     }
         
     if (settings.hasOwnProperty("battery75Colour") && settings["battery75Colour"]) {
@@ -289,8 +301,14 @@ export function applySettings() {
     if (settings.hasOwnProperty("batteryBackgroundColour") && settings["batteryBackgroundColour"]) {
       battery.batteryLineBack.style.fill = settings["batteryBackgroundColour"];
     } else {
-      battery.batteryLineBack.style.fill = "#494949"
-    } 
+      battery.batteryLineBack.style.fill = "#A0A0A0"
+    }
+
+    if (settings.hasOwnProperty("batteryBarAutoOff")) {
+      torch.setAutoOff(settings["batteryBarAutoOff"]);
+    } else {
+      torch.setAutoOff(-1);
+    }
 
     if (settings.hasOwnProperty("bmColour") && settings["bmColour"]) {
       bm.bmrZoneEl.style.fill = settings["bmColour"];
@@ -329,8 +347,8 @@ export function applySettings() {
         activity.progressEls[i].lineBack.style.fill = settings["progressBackgroundColour"]; 
         activity.progressEls[i].lineBackArc.style.fill = settings["progressBackgroundColour"];
       } else {
-        activity.progressEls[i].lineBack.style.fill = "#494949"; 
-        activity.progressEls[i].lineBackArc.style.fill = "#494949";
+        activity.progressEls[i].lineBack.style.fill = "#A0A0A0";
+        activity.progressEls[i].lineBackArc.style.fill = "#A0A0A0";
       }
       
       if(progressBarType == "bars") {
@@ -351,7 +369,8 @@ export function applySettings() {
       }
     }
     
-    var positions = ["TL","BL","TM","MM","BM","TR","BR"];
+    // var positions = ["TL","BL","TM","MM","BM","TR","BR"];
+    var positions = ["TL","BL","TR","BR"];
     
     for (var i=0; i < positions.length; i++) {
       var position = positions[i];  
@@ -377,13 +396,15 @@ export function applySettings() {
       } else {
         if(position == "TL"){
           stat = "steps";
-        } else if(position == "BL"){
+        } else if(position == "BL") {
           stat = "distance";
-        } else if(position == "TM"){
-          stat = "BMIBMR";
-        } else if(position == "MM"){
-          stat = "calories";
-        } else if(position == "TR"){
+        }
+        // else if(position == "TM"){
+        //   stat = "BMIBMR";
+        // } else if(position == "MM"){
+        //   stat = "calories";
+        // }
+        else if(position == "TR"){
           stat = "elevationGain";
         } else if(position == "BR"){
           stat = "activeMinutes";
@@ -412,7 +433,14 @@ export function applySettings() {
     activity.resetProgressPrevState();
     state.reApplyState();
   } catch (ex) {
+    const errorData = {
+      dataType: "error",
+      key: "exception",
+      value: ex,
+      timestamp: new Date().getTime()
+    };
     console.error(ex);
+    asap.send(errorData);
   }
 }
 
@@ -425,7 +453,7 @@ export function setStatsLocation(element, location)
     if(location == "TL")
     {
       element.style.display = "inline";
-      element.x = (5 * maxWidth) / 100;
+      element.x = (20 * maxWidth) / 100;
       element.y = maxHeight - 115
       return;
     }
@@ -433,39 +461,39 @@ export function setStatsLocation(element, location)
     if(location == "BL")
     {
       element.style.display = "inline";
-      element.x = (5 * maxWidth) / 100;
+      element.x = (20 * maxWidth) / 100;
       element.y = maxHeight - 75
       return;
     }
   
-    if(location == "TM")
-    {
-      element.style.display = "inline";
-      element.x = (36 * maxWidth) / 100;
-      element.y = maxHeight - 115;
-      return;
-    }
-  
-    if(location == "MM")
-    {
-      element.style.display = "inline";
-      element.x = (36 * maxWidth) / 100;
-      element.y = maxHeight - 75;
-      return;
-    }
-  
-    if(location == "BM")
-    {
-      element.style.display = "inline";
-      element.x = (36 * maxWidth) / 100;
-      element.y = maxHeight - 35;
-      return;
-    }
+    // if(location == "TM")
+    // {
+    //   element.style.display = "inline";
+    //   element.x = (36 * maxWidth) / 100;
+    //   element.y = maxHeight - 115;
+    //   return;
+    // }
+    //
+    // if(location == "MM")
+    // {
+    //   element.style.display = "inline";
+    //   element.x = (36 * maxWidth) / 100;
+    //   element.y = maxHeight - 75;
+    //   return;
+    // }
+    //
+    // if(location == "BM")
+    // {
+    //   element.style.display = "inline";
+    //   element.x = (36 * maxWidth) / 100;
+    //   element.y = maxHeight - 35;
+    //   return;
+    // }
   
     if(location == "TR")
     {
       element.style.display = "inline";
-      element.x = (67 * maxWidth) / 100;
+      element.x = (55 * maxWidth) / 100;
       element.y = maxHeight - 115;
       return;
     }
@@ -473,7 +501,7 @@ export function setStatsLocation(element, location)
     if(location == "BR")
     {
       element.style.display = "inline";
-      element.x = (67 * maxWidth) / 100;
+      element.x = (55 * maxWidth) / 100;
       element.y = maxHeight - 75;
       return;
     }
@@ -511,7 +539,14 @@ messaging.peerSocket.addEventListener("message", function(evt) {
     
     if(settings[evt.data.key] != newValue)
     {
+      const settingUpdate = {
+        dataType: "setting_update",
+        key: evt.data.key,
+        value: newValue,
+        timestamp: new Date().getTime()
+      };
       console.log(`Setting update - key:${evt.data.key} value:${newValue}`);
+      asap.send(settingUpdate);
       settings[evt.data.key] = newValue
     } else {
       return;
@@ -541,3 +576,4 @@ export function loadSettings() {
 export function saveSettings() {
   fs.writeFileSync(SETTINGS_FILE, settings, SETTINGS_TYPE);
 }
+

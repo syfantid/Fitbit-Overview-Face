@@ -4,9 +4,9 @@ function hasActivity(props, activity)
   { 
     let statsTL = JSON.parse(props.settingsStorage.getItem("StatsTL")).values[0].value;
     let statsBL = JSON.parse(props.settingsStorage.getItem("StatsBL")).values[0].value;
-    let statsTM = JSON.parse(props.settingsStorage.getItem("StatsTM")).values[0].value;
-    let statsMM = JSON.parse(props.settingsStorage.getItem("StatsMM")).values[0].value;
-    let statsBM = JSON.parse(props.settingsStorage.getItem("StatsBM")).values[0].value;
+    // let statsTM = JSON.parse(props.settingsStorage.getItem("StatsTM")).values[0].value;
+    // let statsMM = JSON.parse(props.settingsStorage.getItem("StatsMM")).values[0].value;
+    // let statsBM = JSON.parse(props.settingsStorage.getItem("StatsBM")).values[0].value;
     let statsTR = JSON.parse(props.settingsStorage.getItem("StatsTR")).values[0].value;
     let statsBR = JSON.parse(props.settingsStorage.getItem("StatsBR")).values[0].value;
 
@@ -21,9 +21,9 @@ function hasActivity(props, activity)
 
     return statsTL === activity ||
            statsBL === activity ||
-           statsTM === activity ||
-           statsMM === activity ||
-           statsBM === activity ||
+           // statsTM === activity ||
+           // statsMM === activity ||
+           // statsBM === activity ||
            statsTR === activity ||
            statsBR === activity;
   } catch(e) { 
@@ -38,9 +38,9 @@ function hasStat(props)
     { 
       let statsTL = JSON.parse(props.settingsStorage.getItem("StatsTL")).values[0].value;
       let statsBL = JSON.parse(props.settingsStorage.getItem("StatsBL")).values[0].value;
-      let statsTM = JSON.parse(props.settingsStorage.getItem("StatsTM")).values[0].value;
-      let statsMM = JSON.parse(props.settingsStorage.getItem("StatsMM")).values[0].value;
-      let statsBM = JSON.parse(props.settingsStorage.getItem("StatsBM")).values[0].value;
+      // let statsTM = JSON.parse(props.settingsStorage.getItem("StatsTM")).values[0].value;
+      // let statsMM = JSON.parse(props.settingsStorage.getItem("StatsMM")).values[0].value;
+      // let statsBM = JSON.parse(props.settingsStorage.getItem("StatsBM")).values[0].value;
       let statsTR = JSON.parse(props.settingsStorage.getItem("StatsTR")).values[0].value;
       let statsBR = JSON.parse(props.settingsStorage.getItem("StatsBR")).values[0].value;
 
@@ -54,9 +54,9 @@ function hasStat(props)
 
       return (statsTL != "NONE" && statsTL != "BMIBMR") ||
              (statsBL != "NONE" && statsBL != "BMIBMR") ||
-             (statsTM != "NONE" && statsTM != "BMIBMR") ||
-             (statsMM != "NONE" && statsMM != "BMIBMR") ||
-             (statsBM != "NONE" && statsBM != "BMIBMR") ||
+             // (statsTM != "NONE" && statsTM != "BMIBMR") ||
+             // (statsMM != "NONE" && statsMM != "BMIBMR") ||
+             // (statsBM != "NONE" && statsBM != "BMIBMR") ||
              (statsTR != "NONE" && statsTR != "BMIBMR") ||
              (statsBR != "NONE" && statsBR != "BMIBMR");
     } catch(e) { 
@@ -121,54 +121,48 @@ function hasTime(props)
 
 function mySettings(props) {
   let colourSet = [
-  {color: "#FF00FF"},   
-  {color: "#FFFF00"},  
-  {color: "#00FFFF"},  
-  {color: "#FF0000"},  
-  {color: "#00FF00"},  
-  {color: "#0000FF"},  
-    
-  {color: "white"} ,
-  {color: 'black'},
-  {color: 'cornsilk'},
-  {color: 'gold'},
-  {color: 'aquamarine'},
-  {color: 'deepskyblue'},
-     
-  {color: 'teal'},
-  {color: 'violet'},
-  {color: 'midnightblue'},
-  {color: 'yellowgreen'},
-  {color: 'crimson'},
-  {color: 'lightseagreen'},
-    
-  {color: 'salmon'},
-  {color: '#00FA9A'},  
-  {color: 'darkred'},  
-  {color: 'darkslategrey'},      
-  {color: 'darkorchid'},
-  {color: 'darkorange'},
-    
-  {color: 'lightsteelblue'},
-  {color: 'skyblue'},
-  {color: '#8B4513'},
-  {color: 'khaki'}, 
-  {color: 'palegoldenrod'},  
-  {color: 'navy'},
-    
-  {color: 'deeppink'},
-  {color: 'royalblue'},
-  {color: 'orangered'},
-  {color: 'greenyellow'}, 
-  {color: 'tomato'},  
-  {color: 'forestgreen'},
-    
-  {color: '#00163a'},
-  {color: '#21003a'},
-  {color: '#3a1d00'},
-  {color: '#969696'}, 
-  {color: '#494949'}, 
-  {color: '#2d2d2d'}
+    // yellows
+    {color: "#FFC312"},
+    {color: "#F79F1F"},
+    {color: 'orangered'},
+    {color: "#EA2027"},
+
+    // greens
+    {color: "#C4E538"},
+    {color: "#A3CB38"},
+    {color: "#009432"},
+    {color: '#00ced1'}, // Dark Turquoise
+    {color: '#20b2aa'},
+    {color: "#006266"},
+
+    // blues
+    {color: 'lightseagreen'},
+    {color: '#1289A7'},
+    {color: '#4682b4'},
+    {color: '#0652DD'},
+    {color: '#1B1464'},
+
+
+    // pinks
+    {color: '#FDA7DF'},
+    {color: '#D980FA'},
+    {color: '#9980FA'},
+    {color: 'darkorchid'},
+    {color: 'slateblue'},
+
+    // reds
+    {color: '#FA4D61'},
+    {color: '#B53471'},
+    {color: '#ee82ee'},
+    {color: '#833471'},
+    {color: 'mediumvioletred'},
+
+    // neutrals
+    {color: "white"} ,
+    {color: 'black'},
+    {color: '#969696'},
+    {color: '#A0A0A0'},
+    {color: '#2d2d2d'}
 ];
       
   let modelId = JSON.parse(props.settingsStorage.getItem("deviceModelId"));
@@ -183,7 +177,7 @@ function mySettings(props) {
         { hasTime(props) && <Toggle settingsKey="isAmPm" label="AM/PM indication on 12-hour clock" /> }     
         { hasTime(props) && <Toggle settingsKey="showSeconds" label="Show seconds value" /> }
         { hasTime(props) && <Toggle settingsKey="showLeadingZero" label="Show leading zero on hours" /> }
-        { hasTime(props) && <Toggle settingsKey="flashDots" label="Flash the : in time" /> } 
+        { hasTime(props) && <Toggle settingsKey="flashDots" label="Flash the : in time" /> }
         { hasTime(props) && <Select label="Time Format" settingsKey="timeFormat" options={[ {value:"auto", name:"Automatic (Use Fitbit Setting)"}, {value:"12h", name:"12 hour"}, {value:"24h", name:"24 hour"} ]} /> }
       </Section>   
       
@@ -201,9 +195,9 @@ function mySettings(props) {
       <Section title="Stats">
         <Select label="Top Left" settingsKey="StatsTL" options={availiableStats} />
         <Select label="Bottom Left" settingsKey="StatsBL" options={availiableStats} />
-        <Select label="Top Middle" settingsKey="StatsTM" options={availiableStats} />
-        <Select label="Middle Middle" settingsKey="StatsMM" options={availiableStats} />
-        <Select label="Bottom Middle" settingsKey="StatsBM" options={availiableStats} />
+        {/*<Select label="Top Middle" settingsKey="StatsTM" options={availiableStats} />*/}
+        {/*<Select label="Middle Middle" settingsKey="StatsMM" options={availiableStats} />*/}
+        {/*<Select label="Bottom Middle" settingsKey="StatsBM" options={availiableStats} />*/}
         <Select label="Top Right" settingsKey="StatsTR" options={availiableStats} />
         <Select label="Bottom Right" settingsKey="StatsBR" options={availiableStats} />
       </Section>
@@ -223,7 +217,7 @@ function mySettings(props) {
       
       <Section title="Battery">
         <Toggle settingsKey="showBatteryPercent" label="Show battery percentage" />
-        <Toggle settingsKey="showBatteryBar" label="Show battery bar" />
+        <Toggle settingsKey="showBatteryBar" label="Show battery bar"/>
       </Section>
       
       <Section title="Torch">

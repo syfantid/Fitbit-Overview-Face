@@ -10,6 +10,7 @@ export let torchOn = false;
 export let autoOffTimer = undefined;
 export let torchAutoOff = -1;
 
+
 export function setEnabled(val) { torchEnabled = val}
 export function setAutoOff(val) { torchAutoOff = val}
 

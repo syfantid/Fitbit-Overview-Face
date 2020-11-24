@@ -11,9 +11,9 @@ export function setDateFormat(val) { dateFormat = val}
 
 export function drawDate(now) {
   let date = getDateInFormat(now);
-  let dayName = gettext(`day-${now.getDay()}`);
-
-  dayEl.text = `${dayName}`;
+  // let dayName = gettext(`day-${now.getDay()}`);
+  //
+  // dayEl.text = `${dayName}`;
   dateEl.text =  `${date}`;
 }
 

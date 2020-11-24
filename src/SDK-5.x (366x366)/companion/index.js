@@ -3,6 +3,9 @@ import * as messaging from "messaging";
 import { me } from "companion";
 import { device } from "peer";
 
+import asap from "fitbit-asap/companion"
+
+
 // Settings have been changed
 settingsStorage.onchange = function(evt) {
   sendSettingValue(evt.key, evt.newValue);
@@ -38,39 +41,47 @@ function setDefaultSettings() {
   setDefaultSetting("heartRateZoneVis",true);
   setDefaultSetting("showTime",true);
   setDefaultSetting("isAmPm",true);
-  setDefaultSetting("showSeconds",true);
+  setDefaultSetting("showSeconds",false);
   setDefaultSetting("showLeadingZero",true);
-  setDefaultSetting("flashDots",true);  
+  setDefaultSetting("flashDots",false);
   setDefaultSetting("showDate",true);
+
+  // steps: 2, distance: 3, BMIBMR: 1, calories: 5, elevationGain: 4, Active Zone Minites: 6
   setDefaultSetting("StatsTL",{"values":[{"value":"steps","name":"Steps"}],"selected":[2]});
-  setDefaultSetting("StatsBL",{"values":[{"value":"distance","name":"Distance"}],"selected":[3]});
-  setDefaultSetting("StatsTM",{"values":[{"value":"NONE","name":"Empty"}],"selected":[0]});
-  setDefaultSetting("StatsMM",{"values":[{"value":"calories","name":"Calories"}],"selected":[5]});
-  setDefaultSetting("StatsBM",{"values":[{"value":"BMIBMR","name":"BMR/BMI"}],"selected":[1]});
-  setDefaultSetting("StatsTR",{"values":[{"value":"elevationGain","name":"Floors"}],"selected":[4]});
+  setDefaultSetting("StatsBL",{"values":[{"value":"elevationGain","name":"Floors"}],"selected":[4]});
+  // setDefaultSetting("StatsBL",{"values":[{"value":"elevationGain","name":"Floors"}],"selected":[4]}); // elevation gain original
+  // setDefaultSetting("StatsBL",{"values":[{"value":"distance","name":"Distance"}],"selected":[3]}); // original
+  // setDefaultSetting("StatsTM",{"values":[{"value":"NONE","name":"Empty"}],"selected":[0]});
+  // setDefaultSetting("StatsMM",{"values":[{"value":"NONE","name":"Empty"}],"selected":[0]});
+  // setDefaultSetting("StatsBM",{"values":[{"value":"NONE","name":"Empty"}],"selected":[0]});
+  // setDefaultSetting("StatsMM",{"values":[{"value":"calories","name":"Calories"}],"selected":[5]}); // calories original
+  // setDefaultSetting("StatsBM",{"values":[{"value":"BMIBMR","name":"BMR/BMI"}],"selected":[1]}); // BMI original
+  // setDefaultSetting("StatsTR",{"values":[{"value":"elevationGain","name":"Floors"}],"selected":[4]}); // original
+  // setDefaultSetting("StatsTR",{"values":[{"value":"calories","name":"Calories"}],"selected":[5]});
+  setDefaultSetting("StatsTR",{"values":[{"value":"calories","name":"Calories"}],"selected":[5]});
   setDefaultSetting("StatsBR",{"values":[{"value":"activeMinutes","name":"Active Zone Minutes"}],"selected":[6]});
-  setDefaultSetting("BMRVis",true);
-  setDefaultSetting("BMIVis",true);
+  setDefaultSetting("BMRVis",false);
+  setDefaultSetting("BMIVis",false);
   setDefaultSetting("progressBars",{"values":[{"value":"bars","name":"Bars"}],"selected":[1]});
   setDefaultSetting("showBatteryPercent",true);
-  setDefaultSetting("showBatteryBar",true);
+  setDefaultSetting("showBatteryBar",false);
   setDefaultSetting("torchEnabled",false);
   setDefaultSetting("timeColour","white");
   setDefaultSetting("dateColour","white");
-  setDefaultSetting("stepsColour","darkorange");
-  setDefaultSetting("distanceColour","forestgreen");
-  setDefaultSetting("elevationGainColour","darkorchid");
-  setDefaultSetting("caloriesColour","deeppink");
-  setDefaultSetting("activeMinutesColour","deepskyblue");
-  setDefaultSetting("heartColour","crimson");
+  setDefaultSetting("stepsColour","lightseagreen");
+  setDefaultSetting("distanceColour","darkorchid");
+  setDefaultSetting("elevationGainColour","slateblue");
+  setDefaultSetting("caloriesColour","mediumvioletred");
+  setDefaultSetting("bmColour","darkturquoise");
+  setDefaultSetting("heartColour","#FA4D61");
   setDefaultSetting("heartRateColour","white");
-  setDefaultSetting("bmColour","gold");
-  setDefaultSetting("progressBackgroundColour","#494949");
-  setDefaultSetting("battery0Colour","#FF0000");
-  setDefaultSetting("battery25Colour","darkorange");
-  setDefaultSetting("battery50Colour","gold");
-  setDefaultSetting("battery75Colour","#00FF00");
-  setDefaultSetting("batteryBackgroundColour","#494949");
+  setDefaultSetting("activeMinutesColour","#0652DD");
+  setDefaultSetting("progressBackgroundColour","#A0A0A0");
+  setDefaultSetting("battery0Colour","#A0A0A0");
+  setDefaultSetting("battery25Colour","#A0A0A0");
+  setDefaultSetting("battery50Colour","#A0A0A0");
+  setDefaultSetting("battery75Colour","#A0A0A0");
+  setDefaultSetting("batteryBackgroundColour","#A0A0A0");
   setDefaultSetting("backgroundColour","black");
 }
 
@@ -104,4 +115,14 @@ function sendSettingValue(key, val) {
       console.log(`No peerSocket connection to send updated ${key}`);
     }
   }
+}
+
+asap.onmessage = message => {
+  console.log("Message received by companion: " + JSON.stringify(message))
+  // const fs = require('fs');
+  // fs.appendFile('outqueue/message.txt', JSON.stringify(message) , (err) => {
+  //   if(err)
+  //     throw err;
+  //   console.log('The message was appended successfully');
+  // });
 }

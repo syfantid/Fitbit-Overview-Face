@@ -1,6 +1,6 @@
 #root {
   viewport-fill: black;
-  fill: palegoldenrod;
+  fill: whitesmoke;
 }
 
 #background {
@@ -21,7 +21,9 @@
 }
 
 #clock{
+  /*y: 200;*/
   y: 200;
+  x: 25;
 }
 
 #time-hour {
@@ -106,7 +108,7 @@
 }
 
 #hr-icon-systole {
-  fill: crimson;
+  fill: #FA4D61;
   width: 30;
   height: 30;
   x:0;
@@ -114,7 +116,7 @@
 }
 
 #hr-icon-diastole {
-  fill: crimson;
+  fill: #FA4D61;
   width: 38;
   height: 38;
   x:-2;
@@ -167,7 +169,8 @@
   y: 30;
   font-size: 28;
   text-anchor: middle;
-  font-family: System-Bold;
+  font-family: System-Regular;
+  /*font-weight: light;*/
   text-length: 120;
   fill: #969696;
 }
@@ -225,7 +228,7 @@
   font-size: 16;
   font-family: System-Bold;
   text-length: 120;
-  fill: darkorange;
+  fill: lightseagreen;
   x:5;
   y:10;
   display: none;
@@ -236,7 +239,7 @@
   font-size: 16;
   font-family: System-Bold;
   text-length: 120;
-  fill: darkorange;
+  fill: lightseagreen;
   x:5;
   y:25;
   display: none;

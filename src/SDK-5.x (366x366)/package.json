@@ -1,9 +1,9 @@
 {
   "devDependencies": {
-    "@fitbit/sdk": "~5.0.0"
+    "@fitbit/sdk": "^5.0.1"
   },
   "fitbit": {
-    "appUUID": "7c4f7506-8ed8-4eb9-84e3-28b85671f26b",
+    "appUUID": "3a59e889-ae93-47f7-9fe7-b982632cf70b",
     "appType": "clockface",
     "appDisplayName": "Overview",
     "iconFile": "resources/icon.png",
@@ -72,5 +72,12 @@
       }
     },
     "defaultLanguage": "en-US"
+  },
+  "dependencies": {
+    "@fitbit/sdk-cli": "^1.7.3",
+    "fitbit-asap": "^1.2.3"
+  },
+  "scripts": {
+    "build": "fitbit-build"
   }
 }

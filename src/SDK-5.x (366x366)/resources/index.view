@@ -48,31 +48,31 @@
   </svg>
   
   <svg id="distance">   
-    <text id="distance-count" class="count" fill="forestgreen" />
-    <image id="distance-icon" class="icon" href="stat_dist_solid_24px.png" fill="forestgreen" />
+    <text id="distance-count" class="count" fill="darkorchid" />
+    <image id="distance-icon" class="icon" href="stat_dist_solid_24px.png" fill="darkorchid" />
     <rect id="distance-line-back" x="0" y="20" width="28%" height="5" fill="#969696" />
-    <rect id="distance-line" x="0" y="20" width="50" height="5" fill="forestgreen" />
+    <rect id="distance-line" x="0" y="20" width="50" height="5" fill="darkorchid" />
   </svg>
   
   <svg id="calories">  
-    <text id="calories-count" class="count" fill="deeppink" />
-    <image id="calories-icon" class="icon" href="stat_cals_solid_24px.png" fill="deeppink" />
+    <text id="calories-count" class="count" fill="mediumvioletred" />
+    <image id="calories-icon" class="icon" href="stat_cals_solid_24px.png" fill="mediumvioletred" />
     <rect id="calories-line-back" x="0" y="20" width="28%" height="5" fill="#969696" />
-    <rect id="calories-line" x="0" y="20" width="50" height="5" fill="deeppink" />
+    <rect id="calories-line" x="0" y="20" width="50" height="5" fill="mediumvioletred" />
   </svg> 
   
   <svg id="elevationGain">  
-    <text id="elevationGain-count" class="count" fill="darkorchid" />
-    <image id="elevationGain-icon" class="icon" href="stat_floors_solid_24px.png" fill="darkorchid" />
+    <text id="elevationGain-count" class="count" fill="slateblue" />
+    <image id="elevationGain-icon" class="icon" href="stat_floors_solid_24px.png" fill="slateblue" />
     <rect id="elevationGain-line-back" x="0" y="20" width="28%" height="5" fill="#969696" />
-    <rect id="elevationGain-line" x="0" y="20" width="50" height="5" fill="darkorchid" />
+    <rect id="elevationGain-line" x="0" y="20" width="50" height="5" fill="slateblue" />
   </svg>
   
   <svg id="activeMinutes">   
-    <text id="activeMinutes-count" class="count" fill="deepskyblue" />
-    <image id="activeMinutes-icon" class="icon" href="stat_azm_solid_24px.png" fill="deepskyblue" />
+    <text id="activeMinutes-count" class="count" fill="darkturquoise" />
+    <image id="activeMinutes-icon" class="icon" href="stat_azm_solid_24px.png" fill="darkturquoise" />
     <rect id="activeMinutes-line-back" x="0" y="20" width="28%" height="5" fill="#969696" />
-    <rect id="activeMinutes-line" x="0" y="20" width="50" height="5" fill="deepskyblue" />
+    <rect id="activeMinutes-line" x="0" y="20" width="50" height="5" fill="darkturquoise" />
   </svg>
   
   <svg id="steps-arc">
@@ -83,31 +83,31 @@
   </svg>
   
   <svg id="distance-arc">   
-    <text id="distance-arc-count" class="count-arc" fill="forestgreen" />
-    <image id="distance-arc-icon" class="icon-arc" href="stat_dist_solid_24px.png" fill="forestgreen" />
+    <text id="distance-arc-count" class="count-arc" fill="darkorchid" />
+    <image id="distance-arc-icon" class="icon-arc" href="stat_dist_solid_24px.png" fill="darkorchid" />
     <arc id="distance-arc-line-back" x="0" y="-10" width="28%" arc-width="5" height="60" start-angle="245" sweep-angle="225" fill="#969696" />
-    <arc id="distance-arc-line" x="0" y="-10" width="28%" arc-width="5" height="60" start-angle="245" sweep-angle="0" fill="forestgreen" />
+    <arc id="distance-arc-line" x="0" y="-10" width="28%" arc-width="5" height="60" start-angle="245" sweep-angle="0" fill="darkorchid" />
   </svg>
   
   <svg id="calories-arc">  
-    <text id="calories-arc-count" class="count-arc" fill="deeppink" />
-    <image id="calories-arc-icon" class="icon-arc" href="stat_cals_solid_24px.png" fill="deeppink" />
+    <text id="calories-arc-count" class="count-arc" fill="mediumvioletred" />
+    <image id="calories-arc-icon" class="icon-arc" href="stat_cals_solid_24px.png" fill="mediumvioletred" />
     <arc id="calories-arc-line-back" x="0" y="-10" width="28%" arc-width="5" height="60" start-angle="245" sweep-angle="225" fill="#969696" />
-    <arc id="calories-arc-line" x="0" y="-10" width="28%" arc-width="5" height="60" start-angle="245" sweep-angle="0" fill="deeppink" />
+    <arc id="calories-arc-line" x="0" y="-10" width="28%" arc-width="5" height="60" start-angle="245" sweep-angle="0" fill="mediumvioletred" />
   </svg> 
   
   <svg id="elevationGain-arc">  
-    <text id="elevationGain-arc-count" class="count-arc" fill="darkorchid" />
-    <image id="elevationGain-arc-icon" class="icon-arc" href="stat_floors_solid_24px.png" fill="darkorchid" />
+    <text id="elevationGain-arc-count" class="count-arc" fill="slateblue" />
+    <image id="elevationGain-arc-icon" class="icon-arc" href="stat_floors_solid_24px.png" fill="slateblue" />
     <arc id="elevationGain-arc-line-back" x="0" y="-10" width="28%" arc-width="5" height="60" start-angle="245" sweep-angle="225" fill="#969696" />
-    <arc id="elevationGain-arc-line" x="0" y="-10" width="28%" arc-width="5" height="60" start-angle="245" sweep-angle="0" fill="darkorchid" />
+    <arc id="elevationGain-arc-line" x="0" y="-10" width="28%" arc-width="5" height="60" start-angle="245" sweep-angle="0" fill="slateblue" />
   </svg>
   
   <svg id="activeMinutes-arc">   
-    <text id="activeMinutes-arc-count" class="count-arc" fill="deepskyblue" />
-    <image id="activeMinutes-arc-icon" class="icon-arc" href="stat_azm_solid_24px.png" fill="deepskyblue" />
+    <text id="activeMinutes-arc-count" class="count-arc" fill="darkturquoise" />
+    <image id="activeMinutes-arc-icon" class="icon-arc" href="stat_azm_solid_24px.png" fill="darkturquoise" />
     <arc id="activeMinutes-arc-line-back" x="0" y="-10" width="28%" arc-width="5" height="60" start-angle="245" sweep-angle="225" fill="#969696" />
-    <arc id="activeMinutes-arc-line" x="0" y="-10" width="28%" arc-width="5" height="60" start-angle="245" sweep-angle="0" fill="deepskyblue" />
+    <arc id="activeMinutes-arc-line" x="0" y="-10" width="28%" arc-width="5" height="60" start-angle="245" sweep-angle="0" fill="darkturquoise" />
   </svg>
     
   <rect id="torch" pointer-events="visible" />
