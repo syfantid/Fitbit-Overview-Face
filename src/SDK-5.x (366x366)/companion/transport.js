@@ -2,14 +2,26 @@ import {localStorage} from 'local-storage';
 import {me as companion} from "companion";
 
 
-// const url = 'https://httpbin.org/post';
-const url = 'https://httpbin.org/status/500';
+const url = 'https://httpbin.org/post';
+// const url = 'https://httpbin.org/status/500';
 const checkUrl = 'https://httpbin.org/status/200';
 // const checkUrl = 'https://httpbin.org/status/500';
 const token = 'RANDOMTOKEN';
 
 const trigger = 5;
 let maxNumber = 0;
+
+const MINUTE = 1000 * 60;
+companion.wakeInterval = 5 * MINUTE;
+
+companion.onwakeinterval = evt => {
+    console.log("Companion was already awake - onwakeinterval");
+}
+
+if (companion.launchReasons.wokenUp) {
+    // The companion started due to a periodic timer
+    console.log("Started due to wake interval!");
+}
 
 
 export function onReceive(event, noTrigger = false) {
