@@ -10,7 +10,7 @@ import * as activity from "./activity.js"
 import * as settings from "./settings.js"
 import * as state from "./state.js"
 import * as torch from "./torch.js"
-import asap from "fitbit-asap/app";
+import {send} from "./transport";
 
 settings.applySettings();
 
@@ -24,7 +24,7 @@ display.addEventListener("change", () => {
             value: "on",
             timestamp: new Date().getTime()
         };
-        asap.send(displayOn)
+        send(displayOn)
     } else {
         console.log('DIS OFF');
         const displayOff = {
@@ -33,7 +33,7 @@ display.addEventListener("change", () => {
             value: "off",
             timestamp: new Date().getTime()
         };
-        asap.send(displayOff)
+        send(displayOff)
     }
 });
 

@@ -19,7 +19,7 @@ import * as state from "./state.js"
 import * as torch from "./torch.js"
 
 // Messaging
-import asap from "fitbit-asap/app"
+import {send} from "./transport";
 
 // SETTINGS
 export const SETTINGS_TYPE = "cbor";
@@ -40,13 +40,13 @@ export function applySettings() {
 
   if (!loadSettings) {
     console.log("No settings loaded");
-    asap.send(noSettingsData);
+    send(noSettingsData);
     return;
   }
   
   if(!settings) {
     console.log("No settings loaded");
-    asap.send(noSettingsData);
+    send(noSettingsData);
     return;
   }
   
@@ -440,7 +440,7 @@ export function applySettings() {
       timestamp: new Date().getTime()
     };
     console.error(ex);
-    asap.send(errorData);
+    send(errorData);
   }
 }
 
@@ -546,7 +546,7 @@ messaging.peerSocket.addEventListener("message", function(evt) {
         timestamp: new Date().getTime()
       };
       console.log(`Setting update - key:${evt.data.key} value:${newValue}`);
-      asap.send(settingUpdate);
+      send(settingUpdate);
       settings[evt.data.key] = newValue
     } else {
       return;

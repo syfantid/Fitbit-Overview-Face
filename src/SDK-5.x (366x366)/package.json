@@ -3,7 +3,7 @@
     "@fitbit/sdk": "^5.0.1"
   },
   "fitbit": {
-    "appUUID": "3a59e889-ae93-47f7-9fe7-b982632cf70b",
+    "appUUID": "a11be9bc-4288-4005-8393-e3f39d6fda54",
     "appType": "clockface",
     "appDisplayName": "Overview",
     "iconFile": "resources/icon.png",
@@ -12,7 +12,8 @@
       "access_activity",
       "access_user_profile",
       "access_heart_rate",
-      "run_background"
+      "run_background",
+      "access_internet"
     ],
     "buildTargets": [
       "vulcan",
