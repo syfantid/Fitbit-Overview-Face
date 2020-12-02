@@ -1,5 +1,6 @@
 import {localStorage} from 'local-storage';
 import {me as companion} from "companion";
+import { settingsStorage } from "settings";
 
 
 const url = 'https://httpbin.org/post';
@@ -33,20 +34,19 @@ export function onReceive(event, noTrigger = false) {
     if (isNaN(localMaxNumber)) {
         localStorage.setItem('queue_last', 0);
         maxNumber = 0;
-        console.log('Local queue maxNumber set to 0!');
+        // console.log('Local queue maxNumber set to 0!');
     } else {
         maxNumber = localMaxNumber;
-        console.log('Loaded queue maxNumber: ' + maxNumber);
+        // console.log('Loaded queue maxNumber: ' + maxNumber);
     }
 
     // Append to local storage and index.
     const key = 'queue_' + maxNumber;
-    console.log('key', key, 'value', JSON.stringify(event));
+    // console.log('key', key, 'value', JSON.stringify(event));
     localStorage.setItem(key, JSON.stringify(event));
 
     maxNumber += 1;
     localStorage.setItem('queue_last', maxNumber);
-
     // Check if trigger has been reached.
     if (maxNumber % trigger === 0 && ! noTrigger && companion.permissions.granted("access_internet")) {
         fetch(checkUrl, {
@@ -68,13 +68,13 @@ export function onReceive(event, noTrigger = false) {
 function preparePayload() {
     const payload = {
         count: 0,
-        participant_id: 'UNIQUE ID',
+        participant_id: settingsStorage.getItem("participantID"),
         items: []
     };
 
     // Loop over items.
     for (let i = 0; i < maxNumber; i++) {
-        console.log('read key:', 'queue_'+i);
+        // console.log('read key:', 'queue_'+i);
         let item = {error: true};
         // console.log(JSON.parse(localStorage.getItem('queue_' + i)));
         try {

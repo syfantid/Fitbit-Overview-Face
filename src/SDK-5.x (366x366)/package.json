@@ -3,7 +3,7 @@
     "@fitbit/sdk": "^5.0.1"
   },
   "fitbit": {
-    "appUUID": "a11be9bc-4288-4005-8393-e3f39d6fda54",
+    "appUUID": "fc9314a6-8e86-45ed-8418-08f65e9095f9",
     "appType": "clockface",
     "appDisplayName": "Overview",
     "iconFile": "resources/icon.png",

@@ -130,8 +130,8 @@ export function applySettings() {
       hr.setHrZoneVis(!!settings["heartRateZoneVis"]); 
     } else {
       hr.setHrZoneVis(true);
-    } 
-    
+    }
+
     if (settings.hasOwnProperty("torchEnabled")) {
       torch.setEnabled(!!settings["torchEnabled"]); 
     } else {
@@ -529,13 +529,19 @@ messaging.peerSocket.addEventListener("message", function(evt) {
     if (!settings) {
       settings = {};
     }
-    
+
     var newValue = "";
-    if(typeof evt.data.value === "object") {
+    if(typeof evt.data.value === "object" && evt.data.value.values !== undefined) {
+      // console.log(evt.data.value.values[0].value)
       newValue = evt.data.value.values[0].value; 
+    } else if (evt.data.value.hasOwnProperty('name')) {
+        newValue = evt.data.value.name;
+        console.log('JAMAN');
     } else {
+      console.log(JSON.stringify(evt.data.value));
       newValue = evt.data.value;
     }
+    // console.log("New value",newValue)
     
     if(settings[evt.data.key] != newValue)
     {

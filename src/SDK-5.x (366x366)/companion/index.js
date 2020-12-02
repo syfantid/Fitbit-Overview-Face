@@ -35,6 +35,8 @@ function sendAllSettings() {
 
 function setDefaultSettings() {
   console.log("Set Default Settings");
+  setDefaultSetting("participantID", "")
+  setDefaultSetting("projectID", "userEngagement") // project ID
   setDefaultSetting("distanceUnit", {"values":[{"value":"auto","name":"Automatic (Use Fitbit Setting)"}],"selected":[0]});
   setDefaultSetting("dateFormat", {"values":[{"value":"dd mmmm yyyy","name":"dd mmmm yyyy"}],"selected":[11]});
   setDefaultSetting("timeFormat", {"values":[{"value":"auto","name":"Automatic (Use Fitbit Setting)"}],"selected":[0]});
@@ -107,7 +109,8 @@ function sendSettingValue(key, val) {
     var data = {
       dataType: "settingChange",
       key: key,
-      value: JSON.parse(val)
+      value: JSON.parse(val),
+      timestamp: new Date().getTime()
     };
     
     // If we have a MessageSocket, send the data to the device

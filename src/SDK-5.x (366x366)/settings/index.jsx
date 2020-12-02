@@ -166,12 +166,15 @@ function mySettings(props) {
 ];
       
   let modelId = JSON.parse(props.settingsStorage.getItem("deviceModelId"));
-  let availiableStats = [ {value:"NONE", name:"Empty"}, 
+  let availiableStats = [ {value:"NONE", name:"Empty"}, {value:"participantID", name: "Participant Number"},
                           {value:"BMIBMR", name:"BMR/BMI"}, {value:"steps", name:"Steps"}, {value:"distance", name:"Distance"},
                           {value:"elevationGain", name:"Floors"}, {value:"calories", name:"Calories"}, {value:"activeMinutes", name:"Active Zone Minutes"}]
   
   return (
-    <Page>     
+    <Page>
+      <Section title="Research">
+        <TextInput label="Participant Number" settingsKey="participantID" placeholder="Your Participant Number"/>
+      </Section>
       <Section title="Clock">
         <Toggle settingsKey="showTime" label="Show Time" />
         { hasTime(props) && <Toggle settingsKey="isAmPm" label="AM/PM indication on 12-hour clock" /> }     
